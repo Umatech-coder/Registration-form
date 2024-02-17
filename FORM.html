@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <div class="registration-form">
+        <header>
+            <img src="FB.png" alt="SGOSA2020set">
+            <h1>Shehu Garbai OLD Students Association (SGOSA 2020set) Membership Registration Form</h1>
+        </header>
+        <form="https://sheetdb.io/api/v1/8iwooubwpup1g" method="post" enctype="multipart/form-data" id="sheetdb-form">
+            <h4>Personal information:</h4>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email here" name="data[email]" required>
+            </div>
+            <div class="form-group">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" placeholder="Enter your first name here" name="data[first-name]" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date of birth:</label>
+                <input type="date" id="last-name" placeholder="choose  date" name="data[last-name]" required>
+            </div>
+            <div class="form-group">
+                <label for="profile-image">Profile Image:</label>
+                <input type="file" id="profile-image" name="dats[profile-image]" rrequired>
+                <h4>Educational Data :</h4>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</div>
+<div id="message" style="display: none;">
+    Form submitted successfully!
+</div>
+<script>
+    var form = document.getElementById('sheetdb-form');
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+        fetch(form.action, {
+            method: "POST",
+            bony: new formData(document.getElementById("sheetdb-form")),
+        }).then(
+            response => response.json()
+        ).then((html) => {
+                // you can put any is codes here
+                window.open('d.html');
+            });
+    });
+    const form = document.querySelector('.registration-form form');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent default form submission
+
+        const emailInput = form.querySelector('input[type="email"]');
+        const email = emailInput.value;
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address.');
+            emailInput.focus();
+            return;
+        }
+        // Check for duplicate submission (replace with your actual check logic)
+        const alreadySubmitted = false; // Replace with your logic to check for duplicates
+        if (alreadySubmitted) {
+            alert('This form has already been submitted.');
+            return;
+        }
+
+        // Submit the form (or perform your desired action)
+        console.log('Form submitted successfully!');
+        form.reset(); // Reset the form fields
+    });
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission behavior
+
+        // Your form validation logic, if needed
+
+        // Show success message
+        document.getElementById('message').style.display = 'block';
+
+        // Optional: Additional actions like clearing the form or redirecting the user
+
+    });
+</script>
+</body>
+</html>
